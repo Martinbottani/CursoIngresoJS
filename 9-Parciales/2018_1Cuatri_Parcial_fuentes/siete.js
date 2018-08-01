@@ -27,14 +27,17 @@ function mostrar()
 	var edadesV = 0;
 	var edadesM = 0;
 	//4-
-	var edadMayor =0;
-	var edadMenor =0;
+	var edadMayor;
+	var edadMenor;
 	var nombreMayor;
 	var nombreMenor;
 	var nombreMJMayor;
+	//5-
+	var sexoMayor;
+	var sexoMenor;
+
 	while(contador < 3)
 	{
-		contador++;
 		nombre = prompt("Cómo es tu nombre?");
 		sexo = prompt("Cuál es tu sexo: f o m ");
 		while(sexo != "f" && sexo != "m")
@@ -51,12 +54,27 @@ function mostrar()
 		edades += edad;
 		//Pedí los datos.
 		//1-
+		if(contador == 0) 
+		{
+			edadMenor = edad;
+			edadMayor = edad;
+			sexoMenor = sexo;
+		}
+		
+		
+		if(edad > edadMayor) 
+		{
+			nombreMayor = nombre;
+		}
+		if(edad < edadMenor) 
+		{
+			nombreMenor = nombre;
+		}
+		
 		if (edad < 18) 
 		{
 			cantMenor++;
 			//2 y 3 *EJERCICIO*
-			edadMenor = edad;
-			nombreMenor = nombre;
 			if (sexo == "f") 
 			{
 				mujeres++;	
@@ -74,20 +92,10 @@ function mostrar()
 		{
 			cantMayor++;
 			//2 y 3 *EJERCICIO*
-			edadMayor = edad;
-			if (edadMayor > edad) 
-			{
-				nombreMayor = nombre;
-			}
 			if (sexo == "f") 
 			{
 				mujeres++;
 				edadesM += edad;	
-				cantMJMayores++;
-				if (edadMayor > edadMenor) 
-				{
-					nombreMJMayor = nombre;
-				}
 			}
 			else
 			{
@@ -95,7 +103,8 @@ function mostrar()
 				edadesV += edad;
 				cantVNMayores++;
 			}	
-		}		
+		}	
+		contador++;	
 	}
 	//3 *EJERCICIO*
 	promedioV = edadesV / varones;
