@@ -1,133 +1,208 @@
-/*
-	Maria F 15
-	Jose M 33
-	Fer F 25
+/* 
+Maria F 15
+Jose M 33
+Fer F 25
 */
+
+/*
+1-
+  a-
+  b-
+  c-
+  d-
+
+*/
+
 function mostrar()
 {
-	var nombre;
-	var sexo;
-	var edad;
-	var contador = 0; //isNan, < 0, >100
-	//1-
-	var mujeres = 0;
-	var varones = 0;
-	var cantMenor = 0;
-	var cantMayor = 0;
-	//2-
-	var cantMJMayores = 0;
-	var cantVNMayores = 0;
-	var cantMJMenores = 0;
-	var cantVNMenores = 0;
-	//3-
-	var promedioTotal = 0;
-	var promedioV = 0;
-	var promedioM = 0;
-	var edades = 0;
-	var edadesV = 0;
-	var edadesM = 0;
-	//4-
-	var edadMayor;
-	var edadMenor;
-	var nombreMayor;
-	var nombreMenor;
-	var nombreMJMayor;
-	//5-
-	var sexoMayor;
-	var sexoMenor;
+	var contador = 0;
+	var nombre;//no validacion
+	var sexo;//m o f
+	var edad;//no puede ser menor a 0 o mayor a 100 o isNaN
+	//1
+	var cantmujeres = 0;
+	var canthombres = 0;
+	var cantmayores = 0;
+	var cantmenores = 0;
+	//2
+	var cantmujeresmayores = 0;
+	var canthombresmayores = 0;
+	var canthombresmenores = 0;
+	var cantmujeresmenores = 0;
+	//3
+	var edadtotal=0;
+	var edadtotalmujeres=0;
+	var edadtotalhombres=0;
+	var promediototal;
+	var promediohombres;
+	var promediomujeres;
+	//4
+	var nombredelmayor;
+	var nombredelmenor;
+	var nombremujermayor;
+	var edadmayor;
+	var edadmenor;
+	var edadmujermayor;
+	//5
+	var sexodelmayor;
+	var sexodelmenor;
+	var sexomultiplodecinco;
+	var bandera=0;
 
+	
 	while(contador < 3)
 	{
-		nombre = prompt("Cómo es tu nombre?");
-		sexo = prompt("Cuál es tu sexo: f o m ");
-		while(sexo != "f" && sexo != "m")
+		nombre=prompt("Ingrese nombre");
+		sexo=prompt("Ingrese M o F para indicar su sexo");
+		
+		while(sexo !="f" && sexo !="m")
 		{
-			sexo = promt("Error. Cuál es tu sexo: f o m");
+			sexo=prompt("Ingrese M o F para indicar su sexo");
 		}
-		edad = prompt("Cuál es tu edad?");
-		edad = parseInt(edad);
-		while(isNaN(edad) || edad < 0 || edad >100)
+		
+		edad=prompt("Ingrese su edad");
+		edad=parseInt(edad);
+
+		while(edad < 0 || edad > 100 || isNaN(edad))
 		{
-			edad = prompt("Error. Cuál es tu edad?");
-			edad = parseInt(edad);
+			edad=prompt("Ingrese su edad");
+			edad=parseInt(edad);
 		}
-		edades += edad;
-		//Pedí los datos.
+
+		if(edad%5==0 && bandera==0)
+		{	
+			sexomultiplodecinco = sexo;
+			bandera==1;
+		}
+		//hasta aca obtengo todos los datos.
 		//1-
-		if(contador == 0) 
+		/*if(sexo == "f")
 		{
-			edadMenor = edad;
-			edadMayor = edad;
-			sexoMenor = sexo;
+			cantmujeres++;
+			edadtotalmujeres+= edad;
+		}else
+		{
+			canthombres++;
+			edadtotalhombres+= edad;
 		}
-		
-		
-		if(edad > edadMayor) 
+
+		if(edad < 18)
 		{
-			nombreMayor = nombre;
-		}
-		if(edad < edadMenor) 
+			cantmenores++;
+		}else
 		{
-			nombreMenor = nombre;
-		}
-		
-		if (edad < 18) 
-		{
-			cantMenor++;
-			//2 y 3 *EJERCICIO*
-			if (sexo == "f") 
+			cantmayores++;
+		}*/
+
+		//1-2-3-
+		if(sexo == "f")
+		{	
+			cantmujeres++;
+			if(edad < 18)
 			{
-				mujeres++;	
-				edadesM += edad;
-				cantMJMenores++;
+			cantmenores++;
+			cantmujeresmenores++;
+			edadtotalmujeres+= edad;
+			}else
+			{
+			cantmayores++;
+			cantmujeresmayores++;
+			edadtotalmujeres+= edad;
 			}
-			else 
-			{	
-				varones++;
-				edadesV += edad;
-				cantVNMenores++;
+
+			if(contador==0)
+			{
+			nombremujermayor = nombre;
+			edadmujermayor = edad;
 			}
+			if(edad > edadmujermayor)
+			{
+				edadmujermayor = edad;
+				nombremujermayor = nombre;
+			}
+			
 		}
-		else 
+			
+			
+		if(sexo == "m")
 		{
-			cantMayor++;
-			//2 y 3 *EJERCICIO*
-			if (sexo == "f") 
+			canthombres++;
+			if(edad < 18)
 			{
-				mujeres++;
-				edadesM += edad;	
+			cantmenores++;
+			canthombresmenores++;
+			edadtotalhombres+= edad;
 			}
-			else
+			 else
 			{
-				varones++;
-				edadesV += edad;
-				cantVNMayores++;
-			}	
-		}	
-		contador++;	
+			cantmayores++;
+			canthombresmayores++;
+			edadtotalhombres+= edad;
+			
+			}
+			
+		}
+
+		//3-
+		edadtotal= edadtotal + edad;
+		
+		//4-
+		if(contador == 0)
+		{
+			nombredelmayor=nombre;
+			nombredelmenor=nombre;
+			edadmayor=edad;
+			edadmenor=edad;
+			sexodelmenor=sexo;
+			sexodelmayor=sexo;
+		}
+
+		if(edad > edadmayor)
+		{
+			edadmayor = edad;
+			nombredelmayor = nombre;
+			sexodelmayor=sexo;
+		}else if (edad < edadmenor)
+		{
+			edadmenor = edad;
+			nombredelmenor = edad;
+			sexodelmenor=sexo;
+		}
+
+		//contador
+		contador++;
+
 	}
-	//3 *EJERCICIO*
-	promedioV = edadesV / varones;
-	promedioM = edadesM / mujeres;
-	promedioTotal = edades / 3;
 
-	//1-
-	document.write("La cantidad de mujeres es: " + mujeres + "<br>");
-	document.write("La cantidad de varones es: " + varones + "<br>");
-	document.write("La cantidad de menores es: " + cantMenor + "<br>");
-	document.write("La cantidad de mayores es: " + cantMayor + "<br>");
-	//2-
-	document.write("La cantidad de mujeres mayores es: " + cantMJMayores + "<br>");
-	document.write("La cantidad de varones mayores es: " + cantVNMayores + "<br>");
-	document.write("La cantidad de mujeres menores es: " + cantMJMenores + "<br>");
-	document.write("La cantidad de varones mayores es: " + cantVNMenores + "<br>");
-	//3-
-	document.write("El promedio total es: " + promedioTotal + "<br>");
-	document.write("El promedio de la edad de varones es: " + promedioV + "<br>");
-	document.write("El promedio de la edad de mujeres es: " + promedioM + "<br>");
-	//4-
-	document.write("El nombre de la persona mayor es: " + nombreMayor + "<br>");
-	document.write("El nombre de la persona menor es: " + nombreMenor + "<br>");
-	document.write("El nombre de la mujer mayor es: " + nombreMJMayor + "<br>");
+	promediototal = edadtotal/3;
+	promediomujeres = edadtotalmujeres/cantmujeres;
+	promediohombres = edadtotalhombres/canthombres;
 
+	document.write("Punto 1:" + "<br>");
+	document.write("Hay: " + cantmujeres + " mujeres" + "<br>");
+	document.write("Hay: " + canthombres + " varones" + "<br>");
+	document.write("Hay: " + cantmenores + " menores" + "<br>");
+	document.write("Hay: " + cantmayores + " mayores" + "<br>");
+
+	document.write("Punto 2:" + "<br>");
+	document.write("Hay: " + cantmujeresmayores + " mujeres mayores" + "<br>");
+	document.write("Hay: " + cantmujeresmenores + " mujeres menores" + "<br>");
+	document.write("Hay: " + canthombresmayores + " hombres mayores" + "<br>");
+	document.write("Hay: " + canthombresmenores + " hombres menores" + "<br>");
+
+	document.write("Punto 3:" + "<br>");
+	document.write("El promedio de la edad total es: " + promediototal + "<br>");
+	document.write("El promedio de la edad de varones es: " + promediohombres + "<br>");
+	document.write("El promedio de la edad de mujeres es: " + promediomujeres + "<br>");
+
+	document.write("Punto 4:" + "<br>");
+	document.write("El nombre del mayor es: " + nombredelmayor + "<br>");
+	document.write("El nombre del menor es: " + nombredelmenor + "<br>");
+	document.write("El nombre de la mujer mayor es: " + nombremujermayor + "<br>");
+
+	document.write("Punto 5:" + "<br>");
+	document.write("El sexo de la persona mayor es: " + sexodelmayor + "<br>");
+	document.write("El sexo de la persona menor es: " + sexodelmenor + "<br>");
+	document.write("El sexo de la primer persona multiplo de 5: " + sexomultiplodecinco + "<br>");
+	//while(contador)
 }
